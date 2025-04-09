@@ -124,6 +124,15 @@ Use buttons for more options!
 
 # Callback Query Handler
 @app.on_callback_query()
+# In __main__.py - Add error handling
+   async def main():
+       try:
+           await app.start()
+           await idle()
+       except Exception as e:
+           print(f"Bot failed: {e}")
+       finally:
+           await app.stop()
 async def callback_handler(client, query):
     if query.data == "music_help":
         await query.message.edit_text("🎵 *Music Help*\n\nUse /play to play music\n/queue to see queue\n/skip to skip song")
